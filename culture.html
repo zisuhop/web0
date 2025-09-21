@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藁城宫灯文化意义</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #c62828;
+      --gold: #ffd700;
+      --light-red: #ffebee;
+      --dark-red: #8b0000;
+      --light-gold: #fff9c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", "SimSun", sans-serif;
+      background-color: #f9f5f0;
+      color: #333;
+      line-height: 1.6;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(198,40,40,0.03)" stroke-width="1"/></svg>');
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 页眉样式 */
+    header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+      background-size: 50px 50px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .lantern-decoration {
+      font-size: 2.2rem;
+      margin: 0 15px;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px var(--gold); }
+      to { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold); }
+    }
+
+    /* 导航样式 - 修复版 */
+    nav {
+      background-color: var(--dark-red);
+      padding: 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 18px 20px;
+      display: block;
+      font-weight: bold;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background-color: var(--gold);
+    }
+
+    .nav-links a.active {
+      color: var(--gold);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background-color: var(--gold);
+    }
+
+    /* 移动菜单按钮 */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* 主内容区样式 */
+    .main-content {
+      padding: 40px 0;
+    }
+
+    .culture-section {
+      background: white;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .culture-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, var(--light-red) 0%, rgba(255,235,238,0) 70%);
+      opacity: 0.5;
+    }
+
+    h2 {
+      color: var(--primary-red);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--primary-red);
+    }
+
+    h3 {
+      color: var(--dark-red);
+      margin: 25px 0 15px;
+      font-size: 1.5rem;
+      padding-left: 15px;
+      border-left: 4px solid var(--gold);
+    }
+
+    /* 文化符号样式 */
+    .symbols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+
+    .symbol-card {
+      background: linear-gradient(145deg, #ffffff, #f5f5f5);
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid var(--primary-red);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .symbol-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .symbol-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-red), var(--gold));
+    }
+
+    .symbol-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary-red);
+      display: inline-block;
+      padding: 15px;
+      border-radius: 50%;
+      background-color: var(--light-red);
+    }
+
+    .symbol-card h4 {
+      color: var(--dark-red);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    /* 寓意展示样式 */
+    .meaning-list {
+      margin: 25px 0;
+    }
+
+    .meaning-item {
+      margin-bottom: 25px;
+      padding: 25px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+      border-left: 4px solid var(--gold);
+      transition: transform 0.3s;
+    }
+
+    .meaning-item:hover {
+      transform: translateX(5px);
+    }
+
+    .meaning-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .meaning-icon {
+      width: 45px;
+      height: 45px;
+      background-color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 18px;
+      font-size: 1.3rem;
+      color: var(--dark-red);
+    }
+
+    /* 三宫文化样式 */
+    .three-palace {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin: 35px 0;
+    }
+
+    .palace-item {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .palace-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .palace-header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .palace-content {
+      padding: 25px;
+    }
+
+    /* 时间线样式 */
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background-color: var(--primary-red);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      border: 3px solid var(--primary-red);
+      z-index: 2;
+    }
+
+    .timeline-year {
+      font-weight: bold;
+      color: var(--primary-red);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content {
+      background-color: var(--light-red);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-red);
+    }
+
+    /* 返回按钮样式 */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--gold);
+      color: #333;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 25px 0;
+      transition: all 0.3s;
+      border: 2px solid var(--gold);
+    }
+
+    .back-button:hover {
+      background-color: white;
+      color: #333;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-button i {
+      margin-right: 8px;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background-color: var(--dark-red);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary-red), var(--gold));
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 900px) {
+      .nav-links a {
+        padding: 15px 12px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--dark-red);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links a {
+        padding: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .symbols-grid, .three-palace {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .lantern-decoration {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1><span class="lantern-decoration">🏮</span> 藁城宫灯文化意义 <span class="lantern-decoration">🏮</span></h1>
+  <p>吉祥象征，文化传承</p>
+</header>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html"><i class="fas fa-home logo-icon"></i> 宫灯文化</a>
+    </div>
+
+    <button class="menu-toggle" aria-label="切换导航菜单">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="history.html">历史渊源</a></li>
+      <li><a href="craft.html">制作工艺</a></li>
+      <li><a href="culture.html" class="active">文化意义</a></li>
+      <li><a href="locations.html">体验场所</a></li>
+      <li><a href="interaction.html">视频介绍</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="main-content">
+    <section class="culture-section">
+      <h2>藁城宫灯的文化内涵</h2>
+      <p>藁城宫灯不仅是一种工艺品，更蕴含着丰富的文化意义。作为灯具的照明意义早已经发生了变化，宫灯已经成为了手工艺品，成为了富有吉祥寓意和象征意义的文化现象[1](@ref)。藁城宫灯因其造型美观在我国灯具艺术史中占有非常重要的地位，发展到今天，仍然活跃在我们的生活中，成为代表中国传统文化的典型符号。</p>
+
+      <h3>宫灯的文化象征</h3>
+      <div class="symbols-grid">
+        <div class="symbol-card">
+          <div class="symbol-icon">🎊</div>
+          <h4>吉祥兴旺</h4>
+          <p>宫灯承载着吉祥兴旺的寓意，象征着红红火火的美好生活。中国人一直都崇尚红色，宫灯以红色为主自然而然地传达出对新的期盼和希望。</p>
+        </div>
+
+        <div class="symbol-card">
+          <div class="symbol-icon">💰</div>
+          <h4>富贵繁荣</h4>
+          <p>宫灯富有富贵繁荣之意，代表着财富和繁荣的愿望。黄色象征着至高无上的权威和财富，是黄金的颜色。</p>
+        </div>
+
+        <div class="symbol-card">
+          <div class="symbol-icon">❤️</div>
+          <h4>生命之光</h4>
+          <p>宫灯还寓意生命之光不熄灭，象征生命繁衍，长寿永康。穗坠具有长寿、吉祥之意，顶端一般配有珠子或者玉石，寓意长寿瑞吉。</p>
+        </div>
+
+        <div class="symbol-card">
+          <div class="symbol-icon">🏮</div>
+          <h4>节日喜庆</h4>
+          <p>每逢佳节，大红灯笼高高挂，宫灯遍及全城，寓意红红火火、圆圆满满、吉祥喜庆。红色能够辟邪，代表吉祥，是身份地位和财富的象征。</p>
+        </div>
+      </div>
+
+      <h3>宫灯的深层寓意</h3>
+      <div class="meaning-list">
+        <div class="meaning-item">
+          <div class="meaning-header">
+            <div class="meaning-icon">🎯</div>
+            <h4>历史传承的象征</h4>
+          </div>
+          <p>藁城宫灯始于东汉、盛于隋唐，因进贡宫廷故名"宫灯"，承载着千年的历史文化和工艺传承。宫灯发展到近代，宫灯艺术有了传承和发展，内容题材上的扩大更丰富了其含意，也承载着越来越多的历史与文化内涵。藁城宫灯是承载民族精神与情感的重要载体，是人类智慧的集中体现。</p>
+        </div>
+
+        <div class="meaning-item">
+          <div class="meaning-header">
+            <div class="meaning-icon">🤝</div>
+            <h4>民族团结的象征</h4>
+          </div>
+          <p>在藁城宫灯博物馆，收藏有五十六个民族灯，每种民族灯都体现了不同民族的文化特色，象征着中华民族大家庭的团结和谐。宫灯作为人们喜爱的一种集装饰与实用于一体的工艺品，它的图案设计必然成了满足人们心理寄托的承载体。</p>
+        </div>
+
+        <div class="meaning-item">
+          <div class="meaning-header">
+            <div class="meaning-icon">🌏</div>
+            <h4>文化交流的使者</h4>
+          </div>
+          <p>藁城宫灯不仅在国内市场占据了重要地位，还远销海外多个国家和地区，成为中华文化对外交流的重要载体。产品远销俄罗斯、韩国、日本等十余个国家和地区，成为传播中国文化的重要媒介。</p>
+        </div>
+      </div>
+
+      <h3>藁城"三宫"文化</h3>
+      <p>河北石家庄藁城历史沿革深厚，千百年来积累了深厚的文化底蕴，素有"冀中明珠""河北粮仓"之美誉。历朝历代皆有精美物产专供宫廷使用，在新时期发展过程中，藁城人深挖历史文化，继承传统技艺，不断开拓创新，逐渐形成了宫面、宫灯、宫酒并称的特色"宫文化"产品。</p>
+
+      <div class="three-palace">
+        <div class="palace-item">
+          <div class="palace-header">
+            <h4>宫灯</h4>
+          </div>
+          <div class="palace-content">
+            <p>藁城宫灯是河北省非物质文化遗产，始于东汉、盛于隋唐，因进贡宫廷故名"宫灯"。2006年被评为河北省非物质文化遗产。传统文化对藁城宫灯的艺术造型影响深远，使得藁城宫灯在满足实用功能基础上，呈现出多种艺术形式的审美特征。</p>
+          </div>
+        </div>
+
+        <div class="palace-item">
+          <div class="palace-header">
+            <h4>宫面</h4>
+          </div>
+          <div class="palace-content">
+            <p>藁城宫面制作技艺已有1500多年的加工历史，也叫贡面、御面，藕面。其面条细匀空心，色泽油亮而洁白，耐火不糟，回锅不烂，入沸水一分钟即可煮熟。斩获荣誉颇多："中国国家地理标志产品""中国藁城宫面之城"等。</p>
+          </div>
+        </div>
+
+        <div class="palace-item">
+          <div class="palace-header">
+            <h4>宫酒</h4>
+          </div>
+          <div class="palace-content">
+            <p>藁城造酒源于商，兴于周，至汉代已是宴饮佳品，历经3000年而不衰。1972年，藁城区台西商代遗址出土了世界上最早的酒曲实物和最早的酿酒作坊遗址，足见藁城区酿酒历史悠久。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>宫灯与节日文化</h3>
+      <p>在中国传统文化中，琳琅满目的灯笼象征着圆圆满满、喜庆吉祥，在中秋节、春节、元宵节中，各式各样的灯笼是毫无疑问的"氛围担当"。红灯笼对于中国人的意义，从来不只局限在照明上。</p>
+
+      <p>从腊月末到整个正月里，家家户户门前、窗前、阳台上的那对红灯笼，照亮的是无数思乡游子的回家路，寓意的则是从小家到大家未来一整年的红火生活，热闹、喜庆、温暖、顺遂。</p>
+
+      <h3>现代文化价值</h3>
+      <p>随着经济社会的多元化发展，藁城特产马庄小米、丽阳晒醋、名仁香油等涉农产业逐渐和"宫文化"品牌实现交融，地域特色明显，互补抱团发展良好，藁城区大力推动"宫"文化品牌建设[1](@ref)。</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2021年</div>
+          <div class="timeline-content">
+            <p>藁城区成立了宫文化品牌产业联合会，现有会员单位54个，包括藁城宫面、藁城宫灯、藁城宫酒以及藁城宫米、晒醋、香油等系列产业龙头企业。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022年</div>
+          <div class="timeline-content">
+            <p>藁城区精心打造特色文化商业街宫城印巷项目——宫里街。该项目总占地44亩，总建筑面积7.8万平方米，总投资3.3亿，是石家庄市重点建设的藁城区招商引资项目。</p>
+          </div>
+        </div>
+      </div>
+
+      <p>2022年，藁城宫灯作为北京冬奥会特许商品再次登上世界舞台，冰趣冬奥、祥瑞冬奥、冬奥会吉祥物"冰墩墩"和冬残奥会吉祥物"雪容融"4款纸雕宫灯，设计制作颇为讲究，受到关注。</p>
+
+      <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> 返回主页</a>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 藁城宫灯文化传承网页 | 资料来源于公开搜索结果</p>
+  <p>藁城宫灯 - 千年工艺，光影传奇</p>
+</footer>
+
+<script>
+  // 移动端菜单切换
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  });
+
+  // 页面滚动效果
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+      nav.style.background = 'linear-gradient(to right, var(--dark-red), #700000)';
+    } else {
+      nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+      nav.style.background = 'var(--dark-red)';
+    }
+  });
+
+  // 卡片动画效果
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.symbol-card, .palace-item');
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    setTimeout(() => {
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    }, 300);
+  });
+</script>
+</body>
+</html>

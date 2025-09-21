@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藁城宫灯体验场所</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --gold: #ffd700;
+            --light-red: #ffebee;
+            --dark-red: #8b0000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimSun", sans-serif;
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 页眉样式 */
+        header {
+            background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .lantern-decoration {
+            font-size: 2rem;
+            margin: 0 10px;
+        }
+
+        /* 导航样式 */
+        nav {
+            background-color: var(--dark-red);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* 主内容区样式 */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .locations-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-red);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--dark-red);
+            margin: 20px 0 15px;
+        }
+
+        /* 场所卡片样式 */
+        .location-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .location-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-features {
+            margin: 15px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* 地图样式 - 修改部分 */
+        .map-container {
+            height: 500px; /* 增加高度 */
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 确保图片铺满容器 */
+            display: block;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .map-overlay p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        /* 交通指南样式 */
+        .transport-guide {
+            background-color: var(--light-red);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-red);
+            margin: 30px 0;
+        }
+
+        /* 返回按钮样式 */
+        .back-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+        }
+
+        .back-button:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark-red);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .location-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 350px; /* 移动端高度调整 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-container {
+                height: 300px; /* 小屏幕高度调整 */
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1><span class="lantern-decoration">🏮🏮</span> 藁城宫灯体验场所 <span class="lantern-decoration">🏮🏮</span></h1>
+    <p>亲身体验，感受传统</p>
+</header>
+
+<nav>
+    <a href="index.html">首页</a>
+    <a href="history.html">历史渊源</a>
+    <a href="craft.html">制作工艺</a>
+    <a href="culture.html">文化意义</a>
+    <a href="locations.html">体验场所</a>
+    <a href="interaction.html">视频介绍</a>
+</nav>
+
+<div class="container">
+    <div class="main-content">
+        <section class="locations-section">
+            <h2>藁城宫灯体验场所</h2>
+            <p>藁城区为了普及宫灯历史，传播宫灯文化，促进宫灯产业的快速发展，大力推动宫灯工业旅游项目，将藁藁城宫灯作为一项文化产业与旅游观光融为一体，游客可以参观宫灯生产车间，亲手制作宫灯，感受宫灯文化。</p>
+
+            <h3>主要体验场所</h3>
+            <div class="location-cards">
+                <div class="location-card">
+                    <div class="card-image" style="background-color: #ffebee;">🏛🏛️</div>
+                    <div class="card-content">
+                        <h4>藁城宫灯博物馆</h4>
+                        <p>地址：河北省石家庄市藁城区屯头村</p>
+                        <p>特色：国内唯一一家以宫灯文化为主题的博物馆，收藏有历年制作的系列宫灯，包括五十六个民族灯、双龙戏珠灯、传统红纱宫灯、大型电动宫灯、日韩式宫灯等近千个品种。</p>
+
+                        <div class="card-features">
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>宫灯历史文化展示</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>观现代大型灯展</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>亲身体验制作宫灯</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <div class="card-image" style="background-color: #e8f5e9;">🎭🎭</div>
+                    <div class="card-content">
+                        <h4>中国宫灯博览馆</h4>
+                        <p>地址：河北省石家庄市藁城区</p>
+                        <p>特色：于2006年2月建成，占地16000平方米。旅游产品有工艺纸雕宫灯、红纱宫灯、大型电动彩灯三大系列，300多个品种。</p>
+
+                        <div class="card-features">
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>宫灯艺术展览</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>传统制作工艺演示</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>互动体验区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <div class="card-image" style="background-color: #fff8e1;">🏭🏭</div>
+                    <div class="card-content">
+                        <h4>宫灯生产基地</h4>
+                        <p>地址：河北省石家庄市藁城区屯头村</p>
+                        <p>特色：屯头村被称为"中国宫灯第一村"，是中国传统手工艺宫灯的摇篮，几乎家家户户都从事宫灯制作相关产业。游客可以参观宫灯生产车间，了解现代宫灯制作流程。</p>
+
+                        <div class="card-features">
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>生产车间参观</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>制作流程讲解</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>现场购买宫灯</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-card">
+                    <div class="card-image" style="background-color: #e3f2fd;">🎨🎨</div>
+                    <div class="card-content">
+                        <h4>宫灯手工体验工坊</h4>
+                        <p>地址：河北省石家庄市藁城区</p>
+                        <p>特色：提供宫灯制作体验课程，游客可以在工匠指导下亲手制作一个属于自己的宫灯，深入了解宫灯的制作工艺和文化内涵。</p>
+
+                        <div class="card-features">
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>手工制作体验</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>专业工匠指导</span>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon">✓</div>
+                                <span>带走自制宫灯</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>地理位置</h3>
+            <div class="map-container">
+                <img src="\web\map2.jpg">
+                <div class="map-overlay">
+                    <p>藁城区位于河北省石家庄市东部，距石家庄市区30公里</p>
+                    <p>交通便利，可通过高速公路、国道等多种方式到达</p>
+                </div>
+            </div>
+
+            <div class="transport-guide">
+                <h4>交通指南</h4>
+                <p><strong>自驾车：</strong>从石家庄市区出发，沿和平东路向东行驶，经307国道即可到达藁城区，全程约40分钟。</p>
+                <p><strong>公共交通：</strong>从石家庄市区乘坐516路、快516路、519路公交车可直达藁城区屯头村。</p>
+                <p><strong>高铁：</strong>乘坐高铁至石家庄站，转乘公交车或出租车前往藁城区，全程约1小时。</p>
+            </div>
+
+            <h3>参观建议</h3>
+            <p>1. <strong>最佳参观时间：</strong>每年9月至次年春节是宫灯生产和销售的旺季，此时参观可以看到最繁忙的生产景象。</p>
+            <p>2. <strong>体验项目：</strong>建议提前预约宫灯制作体验课程，尤其是团体参观。</p>
+            <p>3. <strong>购物指南：</strong>藁城宫灯种类繁多，从传统红纱灯到现代纸雕宫灯应有尽有，可根据需要选择购买。</p>
+            <p>4. <strong>周边景点：</strong>可结合参观藁城宫面、宫酒等"三宫文化"相关景点，全面了解藁城传统文化。</p>
+
+            <h3>宫灯工业旅游</h3>
+            <p>近年来，藁城区大力推动宫灯工业旅游项目，依托"中国藁城屯头村宫灯博物馆"和"藁城宫灯博物馆"两座博物馆，将藁城宫灯作为一项文化产业与旅游观光融为一体，形成"宫灯文化游"。</p>
+
+            <p>游客不仅可以参观宫灯生产车间，了解宫灯的制作过程，还可以亲手制作宫灯，感受宫灯文化的魅力。这种工业旅游模式不仅促进了宫灯产业的快速发展，也让更多人了解和传承这一传统手工艺。</p>
+
+            <a href="index.html" class="back-button">返回主页</a>
+        </section>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 藁城宫灯文化传承网页 | 资料来源于公开搜索结果</p>
+    <p>藁城宫灯 - 千年工艺，光影传奇</p>
+</footer>
+</body>
+</html>

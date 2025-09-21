@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藁城宫灯文化传承</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* 基础样式设置 */
+    :root {
+      --primary-red: #c62828;
+      --gold: #ffd700;
+      --light-red: #ffebee;
+      --dark-red: #8b0000;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", "SimSun", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f5f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 页眉样式 */
+    header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--gold);
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .lantern-decoration {
+      font-size: 2rem;
+      margin: 0 10px;
+    }
+
+    /* 导航样式 */
+    nav {
+      background-color: var(--dark-red);
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* 主内容区样式 */
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      gap: 30px;
+    }
+
+    .culture-section {
+      flex: 2;
+      min-width: 300px;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 4px solid var(--primary-red);
+    }
+
+    .interaction-section {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-top: 4px solid var(--gold);
+    }
+
+    h2 {
+      color: var(--primary-red);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 10px;
+    }
+
+    h3 {
+      color: var(--dark-red);
+    }
+
+    /* 宫灯卡片样式 */
+    .lantern-card {
+      background-color: var(--light-red);
+      border-left: 4px solid var(--primary-red);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    /* 交互元素样式 */
+    .interactive-element {
+      background-color: #fff9e6;
+      border: 1px solid var(--gold);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .interactive-element:hover {
+      background-color: #ffeaa7;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-box {
+      display: none;
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px dashed var(--primary-red);
+    }
+
+    /* 新增互动元素样式 */
+    .quiz-container {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 2px solid var(--gold);
+    }
+
+    .quiz-question {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .quiz-option {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quiz-option:hover {
+      background-color: #ffeaa7;
+    }
+
+    .quiz-feedback {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .correct {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .incorrect {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 宽高比 */
+      height: 400px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-prev {
+      left: 15px;
+    }
+
+    .carousel-next {
+      right: 15px;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-indicator.active {
+      background-color: white;
+    }
+
+    .comment-section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 10px;
+    }
+
+    .comment-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .comment {
+      padding: 15px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .share-button {
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: white;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .share-wechat {
+      background-color: #07C160;
+    }
+
+    .share-weibo {
+      background-color: #E6162D;
+    }
+
+    .share-qq {
+      background-color: #12B7F5;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background-color: var(--dark-red);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .carousel {
+        height: 250px;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+      }
+    }
+
+    /* 跳转按钮样式 */
+    .jump-button {
+      display: inline-block;
+      background-color: var(--primary-red);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 15px 0;
+      transition: all 0.3s;
+      border: 2px solid var(--primary-red);
+    }
+
+    .jump-button:hover {
+      background-color: white;
+      color: var(--primary-red);
+    }
+
+    .back-button {
+      display: inline-block;
+      background-color: var(--gold);
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 20px 0;
+      transition: all 0.3s;
+      border: 2px solid var(--gold);
+    }
+
+    .back-button:hover {
+      background-color: white;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1><span class="lantern-decoration">🏮🏮</span> 藁城宫灯文化传承 <span class="lantern-decoration">🏮🏮</span></h1>
+  <p>千年工艺，光影传奇</p>
+</header>
+
+<nav>
+  <a href="index.html">首页</a>
+  <a href="history.html">历史渊源</a>
+  <a href="craft.html">制作工艺</a>
+  <a href="culture.html">文化意义</a>
+  <a href="locations.html">体验场所</a>
+  <a href="interaction.html">视频介绍</a>
+</nav>
+
+<div class="container">
+  <div class="main-content">
+    <section class="culture-section">
+      <h2>藁城宫灯的历史与文化</h2>
+      <p>藁城宫灯是河北省石家庄市藁城区著名的传统手工艺品，始于东汉、盛于隋唐，因进贡宫廷故名"宫灯"。藁城宫灯具有浓厚的地方特色，以"屯头宫灯"为代表，以造型优美、易于保存等特点驰名中外。</p>
+
+      <div class="lantern-card">
+        <h3>历史渊源</h3>
+        <p>相传东汉光武帝刘秀定都后，为了庆贺统一天下之功业，在宫廷里张灯结彩大摆宴席，所挂宫灯盏盏精致，宫灯之名由此而生。后来宫灯的制作技术传入民间，在河北藁城形成了特色产业。</p>
+        <p>明代藁城县屯头村李师傅手工制作的纱灯，以美观明亮、耐风耐用为特色，遐迩闻名。及至清代，乾隆皇帝南巡，见到藁城宫灯，喜其工艺精湛，遂命侍从精选数盏，悬挂宫廷，宫灯因此得名，生意愈发兴隆。</p>
+        <a href="history.html" class="jump-button">了解更多历史</a>
+      </div>
+
+      <h2>制作工艺与特色</h2>
+      <p>传统藁城宫灯都是手工制作，共有56道工序，包括挖竹篾、洗竹竿、钻座眼儿等。从造型上看，藁城宫灯有三个特点：上盖下托、镂空装饰、穗坠（流苏）。</p>
+
+      <!-- 宫灯制作工艺轮播图 -->
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item">
+
+            <div class="carousel-caption">
+              <h3>第一步：选材</h3>
+              <img src="\web\选材1.jpg">
+              <p>传统宫灯以竹子做骨架，象征着团团圆圆</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+
+            <div class="carousel-caption">
+              <h3>第二步：制作框架</h3>
+              <img src="\web\框架1.jpg">
+              <p>主架用竹板通过劈、刮、打眼、穿丝而成</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+
+            <div class="carousel-caption">
+              <h3>第三步：装饰</h3>
+              <img src="\web\装饰1.jpg">
+              <p>以水胶刷过的红纱布当罩，喜庆吉祥</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+
+            <div class="carousel-caption">
+              <h3>第四步：成品</h3>
+              <img src="\web\成品.jpg">
+              <p>精美的藁城宫灯成品，充满传统韵味</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control carousel-prev">❮</button>
+        <button class="carousel-control carousel-next">❯</button>
+        <div class="carousel-indicators">
+          <div class="carousel-indicator active"></div>
+          <div class="carousel-indicator"></div>
+          <div class="carousel-indicator"></div>
+          <div class="carousel-indicator"></div>
+        </div>
+      </div>
+
+      <div class="lantern-card">
+        <h3>主要类型</h3>
+        <p>藁城宫灯已发展到工艺纸雕宫灯、传统宫灯、大型电动宫灯三大系列，300多个品种：</p>
+        <ul>
+          <li><strong>红纱灯</strong>：又称纱罩灯，适合用于大型庆典活动</li>
+          <li><strong>木雕宫灯</strong>：多用于家居、茶楼、宾馆等场所</li>
+          <li><strong>走马灯</strong>：具有旋转动感的特征，多用于节庆装点</li>
+          <li><strong>大型电动彩灯</strong>：适合在街道广场展出</li>
+          <li><strong>工艺纸雕宫灯</strong>：最新研发的系列，将蔚县剪纸艺术与宫灯造型融为一体</li>
+        </ul>
+        <a href="craft.html" class="jump-button">探索制作工艺</a>
+      </div>
+
+      <h2>创新与发展</h2>
+      <p>随着时代的发展，藁城宫灯在保持传统特色的基础上不断创新，实现了机械化、规模化生产模式。如今，藁城宫灯已占据国内90%的市场份额，年销量突破一亿对，年产值20亿元，产品行销全国各地，且出口俄罗斯、韩国、日本等十余个国家和地区。</p>
+
+      <p>近年来，藁城宫灯曾悬挂于天安门和2008北京奥运会，2009年11月25日又被授权为"2010年上海世博会特许商品"。2022年，藁城宫灯作为北京冬奥会特许商品再次登上世界舞台。</p>
+
+      <a href="innovation.html" class="jump-button">了解创新发展</a>
+    </section>
+
+    <section class="interaction-section">
+      <h2>宫灯文化互动体验</h2>
+      <p>点击以下主题了解更多关于藁城宫灯的文化信息：</p>
+
+      <div class="interactive-element" onclick="window.location.href='locations.html'">
+        <h3>📍 线下体验场所</h3>
+        <p>点击了解可以接触宫灯实体的线下场所信息</p>
+      </div>
+
+      <div class="interactive-element" onclick="window.location.href='craft.html'">
+        <h3>🔧 传统制作工艺</h3>
+        <p>点击了解传统宫灯制作技艺</p>
+      </div>
+
+      <div class="interactive-element" onclick="window.location.href='innovation.html'">
+        <h3>🌟 现代创新应用</h3>
+        <p>点击了解宫灯的现代发展与创新</p>
+      </div>
+
+      <div class="interactive-element" onclick="window.location.href='interaction.html'">
+        <h3>🎑 文化意义与象征</h3>
+        <p>点击了解宫灯的文化内涵</p>
+      </div>
+
+      <!-- 宫灯知识小测验 -->
+      <div class="quiz-container">
+        <h3>🏮 宫灯知识小测验</h3>
+        <div class="quiz-question" id="question">藁城宫灯始于哪个朝代？</div>
+        <div class="quiz-options">
+          <div class="quiz-option" data-value="A">A. 东汉</div>
+          <div class="quiz-option" data-value="B">B. 唐代</div>
+          <div class="quiz-option" data-value="C">C. 宋代</div>
+          <div class="quiz-option" data-value="D">D. 明代</div>
+        </div>
+        <div class="quiz-feedback" id="feedback"></div>
+      </div>
+
+      <!-- 分享按钮 -->
+      <div class="share-buttons">
+        <div class="share-button share-wechat">
+          <i class="fab fa-weixin"></i> 微信分享
+        </div>
+        <div class="share-button share-weibo">
+          <i class="fab fa-weibo"></i> 微博分享
+        </div>
+        <div class="share-button share-qq">
+          <i class="fab fa-qq"></i> QQ分享
+        </div>
+      </div>
+
+      <a href="interaction.html" class="jump-button">更多互动体验</a>
+    </section>
+  </div>
+
+  <!-- 评论区域 -->
+  <section class="comment-section">
+    <h2>游客留言与分享</h2>
+    <div class="comment-form">
+      <textarea id="commentText" placeholder="请分享您对藁城宫灯的感想或体验..."></textarea>
+      <button id="submitComment" style="padding: 10px 20px; background-color: var(--primary-red); color: white; border: none; border-radius: 4px; cursor: pointer;">提交留言</button>
+    </div>
+    <div class="comment-list" id="commentList">
+      <div class="comment">
+        <strong>灯笼爱好者</strong> <span style="color: #666; font-size: 0.9em;">- 2025年9月5日</span>
+        <p>去年特意去藁城参观了宫灯博物馆，亲手制作了一个小宫灯，体验非常棒！</p>
+      </div>
+      <div class="comment">
+        <strong>传统文化保护者</strong> <span style="color: #666; font-size: 0.9em;">- 2025年9月2日</span>
+        <p>希望这样的传统工艺能够得到更好的保护和传承，现代与传统的结合很有意义。</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>© 2025 藁城宫灯文化传承网页 | 资料来源于公开搜索结果</p>
+  <p>藁城宫灯 - 千年工艺，光影传奇</p>
+</footer>
+
+<script>
+  // 轮播图功能
+  document.addEventListener('DOMContentLoaded', function() {
+    // 轮播图元素
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+
+    let currentSlide = 0;
+    const slideCount = carouselItems.length;
+
+    // 更新轮播图状态
+    function updateCarousel() {
+      carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      // 更新指示器状态
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    // 下一张幻灯片
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slideCount;
+      updateCarousel();
+    }
+
+    // 上一张幻灯片
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+      updateCarousel();
+    }
+
+    // 跳转到指定幻灯片
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    // 添加事件监听器
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // 指示器点击事件
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => goToSlide(index));
+    });
+
+    // 自动轮播
+    setInterval(nextSlide, 5000);
+
+    // 初始化轮播图
+    updateCarousel();
+
+    // 答题模块功能
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    const feedback = document.getElementById('feedback');
+
+    // 问题数据
+    const questions = [
+      {
+        question: "藁城宫灯始于哪个朝代？",
+        options: ["东汉", "唐代", "宋代", "明代"],
+        answer: "A",
+        explanation: "藁城宫灯始于东汉，盛于隋唐，因进贡宫廷故名宫灯。"
+      },
+      {
+        question: "传统藁城宫灯有多少道制作工序？",
+        options: ["36道", "48道", "56道", "64道"],
+        answer: "C",
+        explanation: "传统藁城宫灯都是手工制作，共有56道工序。"
+      },
+      {
+        question: "以下哪项不是藁城宫灯的主要特点？",
+        options: ["上盖下托", "镂空装饰", "穗坠（流苏）", "金属框架"],
+        answer: "D",
+        explanation: "藁城宫灯的三个主要特点是：上盖下托、镂空装饰、穗坠（流苏）。"
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    // 显示当前问题
+    function showQuestion() {
+      const questionElem = document.getElementById('question');
+      questionElem.textContent = questions[currentQuestion].question;
+
+      const options = document.querySelectorAll('.quiz-option');
+      questions[currentQuestion].options.forEach((option, index) => {
+        options[index].textContent = String.fromCharCode(65 + index) + ". " + option;
+      });
+
+      // 重置反馈
+      feedback.style.display = 'none';
+      feedback.textContent = '';
+      feedback.className = 'quiz-feedback';
+    }
+
+    // 检查答案
+    function checkAnswer(selectedOption, selectedValue) {
+      const correctAnswer = questions[currentQuestion].answer;
+
+      // 移除之前选中的样式
+      quizOptions.forEach(option => {
+        option.classList.remove('selected');
+      });
+
+      // 添加选中样式
+      selectedOption.classList.add('selected');
+
+      if (selectedValue === correctAnswer) {
+        feedback.className = "quiz-feedback correct";
+        feedback.innerHTML = "✓ 回答正确！<br>" + questions[currentQuestion].explanation;
+      } else {
+        feedback.className = "quiz-feedback incorrect";
+        feedback.innerHTML = "✗ 回答错误。正确答案是: " +
+                String.fromCharCode(65 + parseInt(correctAnswer, 36) - 10) + ". " +
+                questions[currentQuestion].options[parseInt(correctAnswer, 36) - 10] +
+                "<br>" + questions[currentQuestion].explanation;
+      }
+
+      feedback.style.display = 'block';
+
+      // 3秒后自动下一题
+      setTimeout(nextQuestion, 3000);
+    }
+
+    // 下一题
+    function nextQuestion() {
+      currentQuestion = (currentQuestion + 1) % questions.length;
+      showQuestion();
+    }
+
+    // 添加选项点击事件
+    quizOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const selectedValue = this.getAttribute('data-value');
+        checkAnswer(this, selectedValue);
+      });
+    });
+
+    // 初始化显示问题
+    showQuestion();
+
+    // 评论功能
+    const submitCommentBtn = document.getElementById('submitComment');
+    const commentList = document.getElementById('commentList');
+
+    submitCommentBtn.addEventListener('click', function() {
+      const commentText = document.getElementById('commentText').value;
+      if (commentText.trim() === "") {
+        alert("请输入留言内容");
+        return;
+      }
+
+      const now = new Date();
+      const dateStr = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+
+      const newComment = document.createElement('div');
+      newComment.className = 'comment';
+      newComment.innerHTML = `
+                    <strong>游客</strong> <span style="color: #666; font-size: 0.9em;">- ${dateStr}</span>
+                    <p>${commentText}</p>
+                `;
+
+      commentList.prepend(newComment);
+      document.getElementById('commentText').value = "";
+
+      alert("感谢您的留言！");
+    });
+
+    // 分享功能
+    document.querySelector('.share-wechat').addEventListener('click', function() {
+      alert("请使用微信扫描分享二维码");
+    });
+
+    document.querySelector('.share-weibo').addEventListener('click', function() {
+      window.open("https://service.weibo.com/share/share.php?url=" +
+              encodeURIComponent(window.location.href) +
+              "&title=" +
+              encodeURIComponent("藁城宫灯文化传承"));
+    });
+
+    document.querySelector('.share-qq').addEventListener('click', function() {
+      window.open("https://connect.qq.com/widget/shareqq/index.html?url=" +
+              encodeURIComponent(window.location.href) +
+              "&title=" +
+              encodeURIComponent("藁城宫灯文化传承"));
+    });
+  });
+</script>
+</body>
+</html>

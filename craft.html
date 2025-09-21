@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>制作工艺 - 藁城宫灯</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #c62828;
+      --gold: #ffd700;
+      --light-red: #ffebee;
+      --dark-red: #8b0000;
+      --light-gold: #fff9c4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", "SimSun", sans-serif;
+      background-color: #f9f5f0;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 页眉样式 */
+    header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--gold);
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .lantern-decoration {
+      font-size: 2.2rem;
+      margin: 0 15px;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px var(--gold); }
+      to { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--gold); }
+    }
+
+    /* 导航样式 */
+    nav {
+      background-color: var(--dark-red);
+      padding: 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 18px 20px;
+      display: block;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a.active {
+      color: var(--gold);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* 主内容区样式 */
+    .main-content {
+      padding: 60px 0;
+    }
+
+    /* 横向时间轴 */
+    .timeline-container {
+      position: relative;
+      margin: 50px 0;
+      overflow-x: auto;
+      padding-bottom: 30px;
+    }
+
+    .timeline-scroll {
+      display: flex;
+      width: max-content;
+      padding: 20px 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 100px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-red), var(--gold));
+      z-index: 1;
+    }
+
+    .process-step {
+      width: 350px;
+      margin-right: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      border-top: 4px solid var(--primary-red);
+    }
+
+    .process-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .step-header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background-color: var(--gold);
+      color: var(--dark-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-right: 15px;
+    }
+
+    .step-title {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .step-content {
+      padding: 25px;
+    }
+
+    /* 修改图片容器样式 */
+    .step-image {
+      height: 180px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      overflow: hidden; /* 防止图片溢出 */
+      position: relative;
+    }
+
+    .step-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 保持比例并填充容器 */
+      transition: transform 0.5s ease;
+    }
+
+    .process-step:hover .step-image img {
+      transform: scale(1.05); /* 悬停时轻微放大 */
+    }
+
+    .step-description {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .step-materials {
+      background-color: var(--light-gold);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .step-materials h4 {
+      color: var(--dark-red);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .step-materials ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .step-materials li {
+      margin-bottom: 5px;
+    }
+
+    /* 材料展示区 */
+    .materials-section {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--primary-red);
+      margin-bottom: 40px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--gold);
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .material-card {
+      background: linear-gradient(to bottom, white, var(--light-red));
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      border: 1px solid rgba(198, 40, 40, 0.1);
+    }
+
+    .material-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .material-icon {
+      font-size: 3rem;
+      color: var(--primary-red);
+      margin-bottom: 15px;
+    }
+
+    .material-name {
+      color: var(--dark-red);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* 现代创新区 */
+    .innovation-section {
+      background: linear-gradient(to bottom, var(--light-red), white);
+      padding: 60px 40px;
+      border-radius: 10px;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .innovation-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--gold) 0%, rgba(255,215,0,0) 70%);
+      opacity: 0.1;
+      border-radius: 50%;
+    }
+
+    .innovation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .innovation-card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .innovation-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .innovation-icon {
+      font-size: 2.5rem;
+      color: var(--primary-red);
+      margin-bottom: 20px;
+    }
+
+    /* 对比表格 */
+    .comparison-section {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin: 60px 0;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .comparison-table th {
+      background-color: var(--primary-red);
+      color: white;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: var(--light-red);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background-color: var(--dark-red);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 80px;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--dark-red);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .process-step {
+        width: 300px;
+      }
+
+      .materials-grid, .innovation-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .materials-section, .innovation-section, .comparison-section {
+        padding: 25px;
+      }
+
+      /* 移动端图片调整 */
+      .step-image {
+        height: 150px;
+      }
+
+      .material-icon, .innovation-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .step-image {
+        height: 120px;
+      }
+
+      .process-step {
+        width: 280px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1><span class="lantern-decoration">🏮🏮</span> 藁城宫灯制作工艺 <span class="lantern-decoration">🏮🏮</span></h1>
+  <p>传统技艺与现代创新的完美融合</p>
+</header>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html"><i class="fas fa-home logo-icon"></i> 藁藁城宫灯</a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="history.html">历史渊源</a></li>
+      <li><a href="craft.html" class="active">制作工艺</a></li>
+      <li><a href="culture.html">文化意义</a></li>
+      <li><a href="locations.html">体验场所</a></li>
+      <li><a href="interaction.html">视频介绍</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="main-content">
+    <h2 class="section-title">宫灯制作九大工序</h2>
+
+    <!-- 横向时间轴 -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      <div class="timeline-scroll">
+        <!-- 步骤1 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <h3 class="step-title">选材准备</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <img src="\web\选材.jpg">
+
+            </div>
+            <p class="step-description">精选优质材料是制作的第一步，传统宫灯以竹子做骨架，现代工艺则采用钢丝骨架，红色绸布或纱绢为主要面料。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需材料</h4>
+              <ul>
+                <li>特制钢丝</li>
+                <li>红色绸布</li>
+                <li>塑料上下座</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <h3 class="step-title">制作骨架</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\制作骨架.jpg">
+            </div>
+            <p class="step-description">将特制的钢丝上下两头插入上下两个塑料座多个小孔内，形成灯笼的基本骨架结构。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需工具</h4>
+              <ul>
+                <li>塑料座模具</li>
+                <li>钢丝固定器</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <h3 class="step-title">加固骨架</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\加固.jpg">
+
+            </div>
+            <p class="step-description">将两根铁杆穿入骨架上下两个塑料座的大孔内，尺寸合适后用气钉枪固定一端的铁杆与塑料座，完成骨架制作。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需工具</h4>
+              <ul>
+                <li>气钉枪</li>
+                <li>铁杆</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤4 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <h3 class="step-title">布料裁剪</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\布料.jpg">
+
+            </div>
+            <p class="step-description">将布料裁剪成类似长椭圆形的布片，绣花、烫金或彩印出象征吉祥如意的图案，再将布片边缘缝合。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需材料</h4>
+              <ul>
+                <li>红色布料</li>
+                <li>金线</li>
+                <li>装饰图案</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤5 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">5</div>
+            <h3 class="step-title">套灯笼套</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\套灯.jpg">
+
+            </div>
+            <p class="step-description">将灯笼套套入骨架，再把骨架向下压，听到"咔"的一声，说明灯座已被铁销卡住，调整布料位置。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 注意事项</h4>
+              <ul>
+                <li>布料对齐</li>
+                <li>均匀分布</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤6 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">6</div>
+            <h3 class="step-title">贴金装饰</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\贴金.jpg">
+
+            </div>
+            <p class="step-description">用手工操作的金条机在布料每根钢丝上履上带有白乳胶的金条，然后晾干。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需材料</h4>
+              <ul>
+                <li>金条</li>
+                <li>白乳胶</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤7 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">7</div>
+            <h3 class="step-title">祥云图案</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\祥云.jpg">
+
+            </div>
+            <p class="step-description">在灯笼的上下座周围贴上金色祥云图案（当地人俗称云子），然后晾干。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 装饰材料</h4>
+              <ul>
+                <li>金色祥云图案</li>
+                <li>专用粘合剂</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤8 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">8</div>
+            <h3 class="step-title">最终组装</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\组装.jpg">
+
+            </div>
+            <p class="step-description">用钳子将灯杆上的铁销按下，灯笼合起来。在灯座与灯笼套交接处缠上金色胶带。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 所需工具</h4>
+              <ul>
+                <li>钳子</li>
+                <li>金色胶带</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤9 -->
+        <div class="process-step">
+          <div class="step-header">
+            <div class="step-number">9</div>
+            <h3 class="step-title">装饰完成</h3>
+          </div>
+          <div class="step-content">
+            <div class="step-image">
+              <!-- 替换为图片 -->
+              <img src="\web\完成.jpg">
+            </div>
+            <p class="step-description">在下座上粘上黄色排须完成宫灯，或在上下的灯座上配大圈，增加美观度。</p>
+            <div class="step-materials">
+              <h4><i class="fas fa-tools"></i> 装饰材料</h4>
+              <ul>
+                <li>黄色排须</li>
+                <li>装饰绣球</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 材料展示区 -->
+    <div class="materials-section">
+      <h2 class="section-title">宫灯制作材料</h2>
+      <div class="materials-grid">
+        <div class="material-card">
+          <div class="material-icon"><i class="fas fa-border-all"></i></div>
+          <h3 class="material-name">绸布面料</h3>
+          <p>使用植绒、八美缎或尼丝纺等材料，植绒、八美缎克重70g/m²-100g/m²，尼丝纺要求克重30g/m²。</p>
+        </div>
+
+        <div class="material-card">
+          <div class="material-icon"><i class="fas fa-link"></i></div>
+          <h3 class="material-name">钢丝骨架</h3>
+          <p>直径与宫灯规格对应，在0.4mm-3.2mm之间，弹性、钢性满足使用需求。</p>
+        </div>
+
+        <div class="material-card">
+          <div class="material-icon"><i class="fas fa-cube"></i></div>
+          <h3 class="material-name">塑料座</h3>
+          <p>上下座用塑料成型，开豁口，与主架组装后形成宫灯的基本结构。</p>
+        </div>
+
+        <div class="material-card">
+          <div class="material-icon"><i class="fas fa-paint-roller"></i></div>
+          <h3 class="material-name">装饰材料</h3>
+          <p>使用金色祥云图案（云子）、金条、金色胶带等装饰材料，增强宫灯的美观度。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 现代创新区 -->
+    <div class="innovation-section">
+      <h2 class="section-title">现代工艺创新</h2>
+      <p>随着时代的发展，藁藁城宫灯在保持传统特色的基础上不断创新，实现了机械化、规模化生产模式。</p>
+
+      <div class="innovation-cards">
+        <div class="innovation-card">
+          <div class="innovation-icon"><i class="fas fa-industry"></i></div>
+          <h3>机械化生产</h3>
+          <p>引入激光雕刻机、注塑机等设备，实现部分工序机械化，提高生产效率。</p>
+        </div>
+
+        <div class="innovation-card">
+          <div class="innovation-icon"><i class="fas fa-lightbulb"></i></div>
+          <h3>LED技术应用</h3>
+          <p>采用LED灯光替代传统照明，节能环保且可实现多种灯光效果。</p>
+        </div>
+
+        <div class="innovation-card">
+          <div class="innovation-icon"><i class="fas fa-desktop"></i></div>
+          <h3>数字化设计</h3>
+          <p>运用3D建模和AI设计工具，创建纹样数据库，创新宫灯设计。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 工艺对比 -->
+    <div class="comparison-section">
+      <h2 class="section-title">传统与现代工艺对比</h2>
+      <table class="comparison-table">
+        <thead>
+        <tr>
+          <th>方面</th>
+          <th>传统工艺</th>
+          <th>现代工艺</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>骨架材料</td>
+          <td>竹制骨架</td>
+          <td>钢丝、碳纤维骨架</td>
+        </tr>
+        <tr>
+          <td>生产效率</td>
+          <td>纯手工，速度慢</td>
+          <td>机械化，效率高</td>
+        </tr>
+        <tr>
+          <td>图案制作</td>
+          <td>手工绘制</td>
+          <td>机械印刷、激光雕刻</td>
+        </tr>
+        <tr>
+          <td>照明方式</td>
+          <td>油灯或蜡烛</td>
+          <td>LED灯光</td>
+        </tr>
+        <tr>
+          <td>产品一致性</td>
+          <td>每件独一无二</td>
+          <td>标准化生产</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2025 藁藁城宫灯文化传承网页 | 资料来源于公开搜索结果</p>
+    <p>藁藁城宫灯 - 千年工艺，光影传奇</p>
+  </div>
+</footer>
+
+<script>
+  // 横向时间轴滚动效果
+  document.addEventListener('DOMContentLoaded', function() {
+    const timelineScroll = document.querySelector('.timeline-scroll');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    timelineScroll.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - timelineScroll.offsetLeft;
+      scrollLeft = timelineScroll.scrollLeft;
+    });
+
+    timelineScroll.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    timelineScroll.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    timelineScroll.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - timelineScroll.offsetLeft;
+      const walk = (x - startX) * 2;
+      timelineScroll.scrollLeft = scrollLeft - walk;
+    });
+
+    // 移动端菜单切换
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>

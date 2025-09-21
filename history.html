@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藁城宫灯历史渊源</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #c62828;
+      --gold: #ffd700;
+      --light-red: #ffebee;
+      --dark-red: #8b0000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Microsoft YaHei", "SimSun", sans-serif;
+      background-color: #f9f5f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 页眉样式 */
+    header {
+      background: linear-gradient(to right, var(--primary-red), var(--dark-red));
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--gold);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .lantern-decoration {
+      font-size: 2rem;
+      margin: 0 10px;
+    }
+
+    /* 导航样式 */
+    nav {
+      background-color: var(--dark-red);
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* 主内容区样式 */
+    .main-content {
+      padding: 40px 0;
+    }
+
+    .history-section {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--primary-red);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: var(--dark-red);
+      margin: 20px 0 15px;
+    }
+
+    /* 时间线样式 */
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background-color: var(--primary-red);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      border: 3px solid var(--primary-red);
+    }
+
+    .timeline-year {
+      font-weight: bold;
+      color: var(--primary-red);
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-content {
+      background-color: var(--light-red);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-red);
+    }
+
+    /* 宫灯卡片样式 */
+    .lantern-card {
+      background-color: var(--light-red);
+      border-left: 4px solid var(--primary-red);
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    /* 图片展示样式 */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      background-color: white;
+    }
+
+    /* 返回按钮样式 */
+    .back-button {
+      display: inline-block;
+      background-color: var(--gold);
+      color: #333;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 20px 0;
+      transition: all 0.3s;
+      border: 2px solid var(--gold);
+    }
+
+    .back-button:hover {
+      background-color: white;
+      color: #333;
+    }
+
+    /* 页脚样式 */
+    footer {
+      background-color: var(--dark-red);
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .image-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1><span class="lantern-decoration">🏮</span> 藁城宫灯历史渊源 <span class="lantern-decoration">🏮</span></h1>
+  <p>千年工艺，传承不息</p>
+</header>
+
+<nav>
+  <a href="index.html">首页</a>
+  <a href="history.html">历史渊源</a>
+  <a href="craft.html">制作工艺</a>
+  <a href="culture.html">文化意义</a>
+  <a href="locations.html">体验场所</a>
+  <a href="interaction.html">视频介绍</a>
+</nav>
+
+<div class="container">
+  <div class="main-content">
+    <section class="history-section">
+      <h2>藁城宫灯的历史发展</h2>
+      <p>藁城宫灯是河北省石家庄市藁城区著名的传统手工艺品，始于东汉、盛于隋唐，因进贡宫廷故名"宫灯"。藁城宫灯具有浓厚的地方特色，以"屯头宫灯"为代表，以造型优美、易于保存等特点驰名中外。</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">东汉时期</div>
+          <div class="timeline-content">
+            <p>藁城宫灯起源于东汉，由古人用的纱罩灯衍变而来。相传东汉光武帝刘秀定都后，为了庆贺统一天下之功业，在宫廷里张灯结彩大摆宴席，所挂宫灯盏盏精致，宫灯之名由此而生。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">明代</div>
+          <div class="timeline-content">
+            <p>明代藁城县屯头村李师傅手工制作的纱灯，以美观明亮、耐风耐用为特色，遐迩闻名，州府县署、豪门富户多有悬挂。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">清代</div>
+          <div class="timeline-content">
+            <p>及至清代，乾隆皇帝南巡，目见其灯，喜其工艺精湛，遂命侍从精选数盏，悬挂宫廷。宫灯因此得名，生意愈发兴隆，其艺传世而不绝。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2006年</div>
+          <div class="timeline-content">
+            <p>藁城宫灯被评为河北省非物质文化遗产，屯头村被称为"中国宫灯第一村"。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2008年</div>
+          <div class="timeline-content">
+            <p>藁城宫灯成为北京奥运会特许商品，"福娃宫灯"深受欢迎。</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022年</div>
+          <div class="timeline-content">
+            <p>藁城宫灯作为北京冬奥会特许商品再次登上世界舞台，冰趣冬奥、祥瑞冬奥等纸雕宫灯设计制作颇为讲究，受到关注。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lantern-card">
+        <h3>宫灯得名的由来</h3>
+        <p>据《河北村镇词典》记载："相传，雍正年间，屯头村一李姓老汉有做灯笼的手艺。每到年节，便做几对灯笼挂在自家门口，以增添节日气氛。有一年，他做了几对精致的灯笼到藁城集市上去卖，恰被县太爷看见，并全部买下，挂在县府整日观赏。这一年又到了进贡日期，县太爷为取悦皇上，将自己心爱的灯笼献进宫内，果然被雍正皇上一眼看中，龙颜大悦，便把灯笼作为贡品。后来皇宫内到处挂上了大红灯笼，由于是皇宫专用，于是人们将贡灯称作宫灯。"这就是藁城宫灯得名的原因。</p>
+      </div>
+
+      <h3>宫灯与宫廷文化的渊源</h3>
+      <p>藁城与宫廷文化有着深厚的历史渊源。西汉末年，刘秀受命河北却危机四伏，辗转征战，频繁活动于滹沱河两岸。据《后汉书》记载："光武郭皇后讳圣通，真定藁人也。建武元年，生皇子疆。二年，贵人立为皇后，疆为皇太子"。公元25年刘秀称帝，年号建武，是为元年，次年即公元26年，郭圣通正式成为东汉历史上的第一位皇后，长子刘疆也成为东汉的第一位太子。自此之后的演变进程中，藁城地区颇多精巧美味之物供给宫廷成为"御品"。</p>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="\web\传统.jpg" alt="传统宫灯制作">
+          <div class="gallery-caption">
+            <h4>传统宫灯制作</h4>
+            <p>传统藁城宫灯都是手艺人纯手工制作，共有56道工序</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="\web\现代.jpg" alt="现代宫灯生产">
+          <div class="gallery-caption">
+            <h4>现代宫灯生产</h4>
+            <p>现代宫灯生产已实现机械化，大大提高了生产效率</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="\web\门口.jpg" alt="宫灯博物馆">
+          <div class="gallery-caption">
+            <h4>宫灯博物馆</h4>
+            <p>藁城宫灯博物馆收藏有历年制作的系列宫灯近千个品种</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lantern-card">
+        <h3>现代发展</h3>
+        <p>随着时代的发展，藁城宫灯在保持传统特色的基础上不断创新，实现了机械化、规模化生产模式。如今，藁城宫灯已占据国内90%的市场份额，年销量突破一亿对，年产值20亿元，产品行销全国各地，且出口俄罗斯、韩国、日本等十余个国家和地区。</p>
+
+        <p>藁城宫灯不仅是一种工艺品，更发展成为当地的重要产业。屯头村被称为"中国宫灯第一村"，全村拥有在工商注册的电商卖家600余家，涵盖多个主要电商平台和销售网站，单纯电商渠道年产值就超5亿元。</p>
+      </div>
+
+      <a href="index.html" class="back-button">返回主页</a>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 藁城宫灯文化传承网页 | 资料来源于公开搜索结果</p>
+  <p>藁城宫灯 - 千年工艺，光影传奇</p>
+</footer>
+</body>
+</html>

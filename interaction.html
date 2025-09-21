@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>藁城屯头村 - 中国宫灯第一村</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Microsoft YaHei', sans-serif;
+    }
+
+    body {
+      background-color: #f9f5f0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(to right, #c62828, #8b0000);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    /* 新增导航栏样式 */
+    nav {
+      background-color: #8b0000;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 宽高比 */
+      margin: 30px 0;
+    }
+
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .play-button {
+      width: 80px;
+      height: 80px;
+      background: rgba(198, 40, 40, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .content-section {
+      background: white;
+      padding: 30px;
+      margin: 30px 0;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #c62828;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background: #8b0000;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .content-section {
+        padding: 20px;
+      }
+
+      /* 移动端导航栏调整 */
+      nav a {
+        margin: 0 10px;
+        font-size: 1rem;
+        padding: 5px 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* 小屏幕导航栏调整 */
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🏮🏮 藁城屯头村 - 中国宫灯第一村 🏮🏮🏮</h1>
+  <p>千年工艺传承，点亮世界的光影艺术</p>
+</header>
+
+<!-- 新增导航栏 -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+    <a href="history.html"><i class="fas fa-history"></i> 历史渊源</a>
+    <a href="craft.html"><i class="fas fa-tools"></i> 制作工艺</a>
+    <a href="culture.html"><i class="fas fa-landmark"></i> 文化意义</a>
+    <a href="locations.html"><i class="fas fa-map-marker-alt"></i> 体验场所</a>
+    <a href="interaction.html"><i class="fas fa-video"></i> 视频介绍</a>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- 视频部分 -->
+  <div class="video-container">
+    <div class="video-placeholder">
+      <video controls>
+        <source src="\web\介绍.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- 村庄介绍 -->
+  <div class="content-section">
+    <h2>村庄概况</h2>
+    <p>河北省石家庄市藁城区梅花镇屯头村被誉为"中国宫灯第一村"，是全国乃至世界最大的宫灯生产基地。这里几乎家家户户都从事宫灯相关产业，全村90%以上村民参与宫灯制作、销售等环节，形成了完整的宫灯产业链。</p>
+
+    <p>屯头村东临卞家寨村，西临西庄村，南邻崔家庄村，北邻阳台村，毗邻藁梅路，交通便利，位置优越。村庄有着悠久的历史，据明嘉靖十三年成书的《藁城县志》记载，该地为"屯水整流处"，故得名"屯头"。</p>
+  </div>
+
+  <!-- 历史渊源 -->
+  <div class="content-section">
+    <h2>历史渊源</h2>
+    <p>藁城宫灯制作历史可追溯至东汉时期，由纱罩灯衍变而来。相传光武帝刘秀的皇后郭圣通是藁城人，入宫后将家乡的手艺人组织起来，建立各种手工作坊，所制产品专供宫内及军营所用，其中灯笼作坊就在屯头村。</p>
+
+    <p>明代时期，屯头村李师傅手工制作的纱灯以美观明亮、耐风耐用为特色，闻名遐迩迩。到了清代，乾隆皇帝南巡时见到藁城宫灯，喜其工艺精湛，遂命侍从精选数盏悬挂于宫廷，宫灯因此得名，生意愈发兴隆。</p>
+  </div>
+
+  <!-- 制作工艺 -->
+  <div class="content-section">
+    <h2>制作工艺</h2>
+    <p>传统藁城宫灯都是手工制作，共有56道工序，包括挖竹篾篾、洗竹竿、钻座眼儿等。从造型上看，藁城宫灯有三个特点：上盖下托、镂空装饰、穗坠（流苏）。</p>
+
+    <p>藁城宫灯以红纱灯最为出名，在用料上以竹子做骨架，制成椭圆形状，结构上撑合自如，易于保存。画屏图案多为龙凤呈祥、福寿延年、吉祥如意等，配上精细复杂的装饰。</p>
+  </div>
+
+  <!-- 产业发展 -->
+  <div class="content-section">
+    <h2>产业发展</h2>
+    <p>屯头村宫灯产业经历了从家庭作坊到规模化生产的演变过程：</p>
+
+    <ul>
+      <li><strong>手工制作时期</strong>：完全依赖工匠手艺，生产效率较低</li>
+      <li><strong>半机械化时期</strong>：上世纪九十年代后期，随着电动工具的逐渐普及，宫灯生产进入半机械化时代</li>
+      <li><strong>机械化生产时期</strong>：2000年后，注塑机开始广泛应用，过去纯手工雕作的宫灯可以由注塑机一次成型</li>
+      <li><strong>电商销售时代</strong>：近年来，随着年轻人、新思维、新渠道的加入，藁城宫灯的销售渠道逐渐从线下发展到线上</li>
+    </ul>
+
+    <p>目前，屯头村宫灯产业已经形成了完整的产业链，涵盖设计、生产、包装、销售、物流等环节。全村拥有在工商注册的电商卖家600余家，涵盖多个主要电商平台和销售网站，单纯电商渠道年产值就超5亿元。</p>
+  </div>
+
+  <!-- 文化意义 -->
+  <div class="content-section">
+    <h2>文化意义</h2>
+    <p>2007年，藁城宫灯被列入河北省非物质文化遗产名录。屯头村也被称为"中国宫灯第一村"。</p>
+
+    <p>藁城宫灯曾参与多项国际国内重大活动：</p>
+    <ul>
+      <li>1997年香港回归祖国天安门广场倒计时活动</li>
+      <li>2008年北京奥运会</li>
+      <li>2010年上海世博会</li>
+      <li>2022年北京冬奥会</li>
+    </ul>
+
+    <p>产品不仅行销全国各地，且出口俄罗斯、韩国、日本等十余个国家和地区。</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2023 藁城屯头村宫灯文化介绍</p>
+  <p>资料来源于公开搜索结果</p>
+</footer>
+
+<script>
+  // 视频播放功能
+  document.querySelector('.play-button').addEventListener('click', function() {
+    alert('视频播放功能将在此处启动。实际实现时，这里将嵌入视频播放器。');
+  });
+</script>
+</body>
+</html>
