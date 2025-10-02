@@ -519,4 +519,3 @@ document.addEventListener('DOMContentLoaded', () => {
     new PalaceLanternAI();
 });
 
-
