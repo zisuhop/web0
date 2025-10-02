@@ -1,5 +1,5 @@
 // 宫灯文化智能助手
-class Palace-lantern-ai {
+class PalaceLanternAI { {
     constructor() {
         // 重构后的知识库 - 使用更清晰的结构
         this.knowledgeBase = {
@@ -518,5 +518,6 @@ class Palace-lantern-ai {
 document.addEventListener('DOMContentLoaded', () => {
     new PalaceLanternAI();
 });
+
 
 
