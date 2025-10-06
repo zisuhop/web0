@@ -1,7 +1,7 @@
 // palace-lantern-ai.js
 class PalaceLanternAI {
     constructor() {
-        // 宫灯知识库 - 结构化组织
+        // 宫灯知识库
         this.knowledgeBase = {
             // 基础介绍类
             "介绍": this.getIntroduction(),
@@ -247,22 +247,81 @@ class PalaceLanternAI {
 • 推动创新融合发展`;
     }
 
+    getModernDevelopment() {
+        return `藁城宫灯的现代发展：
+
+🚀 创新方向：
+1. 产品创新
+   - 工艺纸雕宫灯：融合剪纸艺术
+   - 智能交互宫灯：内置LED变色灯珠
+   - AR宫灯：扫描触发动画效果
+
+2. 技术创新
+   - 3D打印技术复刻传统构件
+   - 激光雕刻提高生产效率
+   - 环保材料应用
+
+3. 营销创新
+   - 电商直播带货
+   - 文创IP开发
+   - 文旅体验项目
+
+🏆 重要成就：
+• 2008年北京奥运会特许商品
+• 2010年上海世博会特许商品
+• 2022年北京冬奥会特许商品`;
+    }
+
+    getComparison() {
+        return `藁城宫灯与其他地区宫灯的比较：
+
+🏮 北京宫灯：
+• 特点：宫廷风格，紫檀木框架，珐琅装饰
+• 用途：高端场合陈列，外交礼品
+• 文化：体现皇家审美
+
+🏮 南京宫灯：
+• 特点：江南风格，竹编工艺，薄绢灯罩
+• 用途：秦淮灯会，文人雅士装饰
+• 文化：融合六朝文脉
+
+🏮 藁城宫灯：
+• 特点：民间工艺，红纱罩面，镂空雕刻
+• 用途：节庆装饰，日常生活
+• 文化：代表北方民间艺术
+
+总结：藁城宫灯更贴近民间生活，产业化程度最高，而北京宫灯更显皇家气派，南京宫灯更具文人气息。`;
+    }
+
+    getProductionTime() {
+        return `制作一盏传统藁城宫灯的时间要求：
+
+⏳ 手工制作：
+• 完整56道工序：5-7天
+• 核心工序（骨架+装饰）：3-4天
+• 简单款式：2-3天
+
+⚙️ 机械辅助：
+• 半机械化生产：1-2天
+• 批量生产：每天可完成数百件
+
+🛠️ 影响时间的因素：
+1. 工艺复杂度：镂空雕刻最耗时
+2. 工匠熟练度：老师傅可节省30%时间
+3. 材料准备：竹材需提前处理
+4. 天气条件：湿度影响干燥速度`;
+    }
+
     // === UI 创建与交互 ===
     
     createUI() {
-        // 创建浮动按钮
-        this.aiButton = document.createElement('div');
-        this.aiButton.id = 'palace-lantern-ai-button';
-        this.aiButton.innerHTML = '<i class="fas fa-robot"></i>';
-        document.body.appendChild(this.aiButton);
-
-        // 创建聊天窗口
+        // 创建内嵌式聊天窗口
         this.chatWindow = document.createElement('div');
         this.chatWindow.id = 'palace-lantern-chat-window';
         this.chatWindow.innerHTML = `
             <div class="chat-header">
                 <h3>宫灯文化助手</h3>
-                <button id="close-chat"><i class="fas fa-times"></i></button>
+                <button id="minimize-chat"><i class="fas fa-window-minimize"></i></button>
             </div>
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot-message">
@@ -280,52 +339,28 @@ class PalaceLanternAI {
                 <div class="quick-question" data-question="宫灯的文化意义">文化意义</div>
             </div>
         `;
-        document.body.appendChild(this.chatWindow);
+        
+        // 将聊天窗口插入到页面中
+        const targetElement = document.querySelector('.main-content') || document.body;
+        targetElement.appendChild(this.chatWindow);
 
-        // 添加样式
         this.addStyles();
     }
 
     addStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            #palace-lantern-ai-button {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                background: linear-gradient(to right, #c62828, #8b0000);
-                color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5rem;
-                cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                transition: all 0.3s;
-            }
-            
-            #palace-lantern-ai-button:hover {
-                transform: scale(1.1);
-            }
-            
             #palace-lantern-chat-window {
-                position: fixed;
-                bottom: 90px;
-                right: 20px;
-                width: 350px;
-                height: 450px;
+                width: 100%;
+                height: 500px;
                 background: white;
-                border-radius: 10px;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
                 display: flex;
                 flex-direction: column;
-                z-index: 1000;
+                margin: 30px 0;
+                border-top: 4px solid #c62828;
                 overflow: hidden;
-                display: none;
             }
             
             .chat-header {
@@ -335,6 +370,7 @@ class PalaceLanternAI {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                cursor: pointer;
             }
             
             .chat-header h3 {
@@ -427,13 +463,20 @@ class PalaceLanternAI {
                 color: white;
             }
             
-            @media (max-width: 480px) {
+            /* 最小化状态 */
+            .minimized {
+                height: 60px !important;
+            }
+            
+            .minimized .chat-messages,
+            .minimized .chat-input,
+            .minimized .quick-questions {
+                display: none !important;
+            }
+            
+            @media (max-width: 768px) {
                 #palace-lantern-chat-window {
-                    width: 100%;
-                    right: 0;
-                    bottom: 70px;
-                    height: calc(100vh - 70px);
-                    border-radius: 10px 10px 0 0;
+                    height: 400px;
                 }
             }
         `;
@@ -441,14 +484,19 @@ class PalaceLanternAI {
     }
 
     setupEventListeners() {
-        // 按钮点击事件
-        this.aiButton.addEventListener('click', () => {
-            this.chatWindow.style.display = 'flex';
+        // 最小化/恢复功能
+        const chatHeader = this.chatWindow.querySelector('.chat-header');
+        const minimizeBtn = document.getElementById('minimize-chat');
+        
+        minimizeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleMinimize();
         });
-
-        // 关闭按钮
-        document.getElementById('close-chat').addEventListener('click', () => {
-            this.chatWindow.style.display = 'none';
+        
+        chatHeader.addEventListener('click', () => {
+            if (this.chatWindow.classList.contains('minimized')) {
+                this.toggleMinimize();
+            }
         });
 
         // 发送消息
@@ -469,6 +517,16 @@ class PalaceLanternAI {
                 this.getAnswer(question);
             });
         });
+    }
+
+    toggleMinimize() {
+        this.chatWindow.classList.toggle('minimized');
+        const icon = document.getElementById('minimize-chat').querySelector('i');
+        if (this.chatWindow.classList.contains('minimized')) {
+            icon.className = 'fas fa-window-maximize';
+        } else {
+            icon.className = 'fas fa-window-minimize';
+        }
     }
 
     sendMessage() {
