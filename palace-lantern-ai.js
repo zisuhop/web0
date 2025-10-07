@@ -3,37 +3,357 @@ class PalaceLanternAI {
     constructor() {
         // 宫灯知识库
         this.knowledgeBase = {
-            // 基础介绍类
-            "介绍": this.getIntroduction(),
-            "历史": this.getHistory(),
-            "工艺": this.getCraftsmanship(),
-            "种类": this.getTypes(),
-            "文化": this.getCulture(),
-            "产业": this.getIndustry(),
-            
-            // 具体问题类
-            "起源": this.getOrigin(),
-            "制作步骤": this.getProductionSteps(),
-            "特色工艺": this.getSpecialTechniques(),
-            "传承现状": this.getInheritanceStatus(),
-            "现代发展": this.getModernDevelopment(),
-            
-            // 比较分析类
-            "比较": this.getComparison(),
-            "区别": this.getDifferences(),
-            
-            // 实用信息类
-            "制作时间": this.getProductionTime(),
-            "技艺要求": this.getSkillRequirements(),
-            "使用场合": this.getUsageOccasions(),
-            
-            // 问候语
-            "你好": this.getGreeting(),
-            "您好": this.getGreeting(),
-            "hi": this.getGreeting(),
-            "hello": this.getGreeting()
+            "历史": "藁城宫灯制作历史可追溯至东汉时期，由纱罩灯衍变而来。相传光武帝刘秀的皇后郭圣通是藁城人，入宫后将家乡的手艺人组织起来，建立各种手工作坊，所制产品专供宫内及军营所用，其中灯笼作坊就在屯头村。",
+            "工艺": "传统藁城宫灯都是手工制作，共有56道工序，包括挖竹篾、洗竹竿、钻座眼儿等。从造型上看，藁城宫灯有三个特点：上盖下托、镂空装饰、穗坠（流苏）。",
+            "种类": "藁城宫灯已发展到工艺纸雕宫灯、传统宫灯、大型电动宫灯三大系列，300多个品种，包括红纱灯、木雕宫灯、走马灯、工艺纸雕宫灯等。",
+            "产业": "屯头村被称为'中国宫灯第一村'，年产量突破1亿对，年产值20亿元，产品行销全国各地，且出口俄罗斯、韩国、日本等十余个国家和地区。",
+            "文化": "2007年，藁城宫灯被列入河北省非物质文化遗产名录。曾参与1997年香港回归、2008年北京奥运会、2010年上海世博会、2022年北京冬奥会等重大活动。",
+            "你好": "你好！很高兴见到你！😊 有什么我可以帮助你的吗？无论是回答问题、聊天，还是其他任何需要，我都很乐意为你提供帮助！",
+            "能介绍一下藁城宫灯吗":"藁城宫灯是河北省石家庄市藁城区著名的传统手工艺品，也是河北省的非物质文化遗产。它起源于东汉、盛于隋唐，因历史上曾进贡宫廷而得名"宫灯"。\n" +
+                "🏮 历史与传说\n" +
+                "关于藁城宫灯的得名，流传着与清代乾隆皇帝相关的传说。据说乾隆皇帝南巡时，见到藁城工匠制作的灯笼工艺精湛，便命人挑选数盏带回宫中悬挂，"宫灯"之名由此流传开来。\n" +
+                "🔧 工艺与特点\n" +
+                "传统的藁城宫灯制作工艺十分复杂，多达56道工序，包括挖竹篾、洗竹竿、钻座眼儿等。宫灯的造型以椭圆形为主，结构上撑合自如，易于保存。\n" +
+                "💡 主要种类\n" +
+                "藁城宫灯发展至今已形成众多品种，主要有五大系列：红纱灯、木雕宫灯、走马灯、大型电动彩灯和工艺纸雕宫灯。\n" +
+                "🌟 现代发展与文化意义\n" +
+                "如今，藁城宫灯已实现了机械化、规模化生产，产品不仅占据国内大部分市场，还远销海外。宫灯象征着红红火火、吉祥喜庆，是中国人春节记忆中不可或缺的视觉符号。",
+            "藁城宫灯的起源可以追溯到哪个朝代？其最初的设计灵感或用途是什么？":"根据藁城宫灯的历史记载，其起源可以追溯到东汉时期。相传光武帝刘秀的皇后郭圣通是藁城人，她入宫后组织家乡手艺人建立手工作坊，所制作的灯笼专供宫廷和军营使用，屯头村的灯笼作坊就是其中代表。最初的设计灵感源于宫廷照明和庆典需求，用途主要是为皇室和军队提供照明装饰，体现了尊贵与吉祥的象征意义。",
+            "传统藁城宫灯在制作工艺上有哪些核心步骤？这些步骤中最能体现其技艺特色的是哪一环？":"传统藁城宫灯的制作工艺包含56道核心工序，其中最能体现技艺特色的关键环节是镂空装饰。\n" +
+                "1. 选材备料：精选竹材制作骨架，红纱需经过染色、上胶处理\n" +
+                "2. 框架制作：挖竹篾、洗竹竿、钻座眼儿\n" +
+                "3. 装饰工艺：镂空雕刻吉祥图案，制作穗坠流苏\n" +
+                "镂空装饰要求匠人具备三维空间想象力和稳如磐石的手工精度，每平方厘米需雕刻10-15个镂空点，刀工误差不能超过0.5毫米，图案需保证从360°任意角度观看都呈现完整对称造型。",
+            "藁城宫灯与其他地区的宫灯（如北京宫灯、南京宫灯）相比，在造型、纹饰和文化内涵上有哪些显著区别？":"藁城宫灯与其他地区宫灯的显著区别：\n" +
+                "1. 造型：藁城宫灯以椭圆形为主，强调上盖下托结构；北京宫灯多为六角或八角形，层次繁复；南京宫灯偏纤秀轻盈\n" +
+                "2. 纹饰：藁城宫灯以北方民间吉祥纹样为主；北京宫灯用皇家御用纹样；南京宫灯多江南文人题材\n" +
+                "3. 文化：藁城宫灯代表北方民间文化；北京宫灯体现皇家礼制；南京宫灯融合六朝文脉与秦淮风情",
+            "藁城宫灯在历史发展中经历过哪些重要的演变？是否融入过不同时代的文化元素？":"藁城宫灯的历史演变：\n" +
+                "1. 东汉起源：专供宫廷使用\n" +
+                "2. 隋唐兴盛：传入民间，技术成熟\n" +
+                "3. 明清发展：成为贡品，工艺标准化\n" +
+                "4. 近现代转型：机械化生产\n" +
+                "5. 当代国际化：参与奥运会、世博会等\n" +
+                "文化融合：\n" +
+                "- 唐代吸收宝相花、缠枝纹等华丽图案\n" +
+                "- 宋代融入梅兰竹菊等雅致题材\n" +
+                "- 现代与剪纸艺术、AR技术等结合",
+            "作为非物质文化遗产藁城宫灯目前的传承现状如何？有哪些代表性的传承人和传承方式？":"藁城宫灯传承现状：\n" +
+                "1. 生产规模化：年产量超1亿对，占全国80%市场\n" +
+                "2. 技艺创新化：部分工序机械化，开发新品类\n" +
+                "3. 保护体系化：2007年列入省级非遗，建立博物馆\n" +
+                "代表传承人：\n" +
+                "- 李师傅家族：世代相传，坚守手工技艺\n" +
+                "- 张守义：研发纸雕宫灯技术\n" +
+                "- 王翠敏：设计冬奥会特许商品\n" +
+                "传承方式：教育传承、文旅融合、数字化保护",
+            "藁城宫灯在当地的民俗活动中扮演着怎样的角色？除了春节，还有哪些场合会悬挂或使用它？":"藁城宫灯在民俗活动中的角色：\n" +
+                "1. 节庆仪式载体：春节/元宵节悬挂，象征团圆\n" +
+                "2. 文化身份标识：婚嫁陪嫁品，寓意"前途光明"\n" +
+                "3. 经济社交纽带：家庭收入来源，馈赠礼品\n" +
+                "使用场合：\n" +
+                "- 生命礼仪：婚礼、寿诞、新生儿满月\n" +
+                "- 官方盛事：政府会议、城市亮化\n" +
+                "- 国际交流：外交礼物、文化展览",
+            "藁城宫灯的经典款式有哪些？这些款式的命名是否有对应的寓意或故事？":"经典款式及寓意：\n" +
+                "1. 红纱灯：红色象征喜庆团圆，源自汉代宫廷\n" +
+                "2. 木雕宫灯：雕刻"松鹤延年"喻长寿\n" +
+                "3. 走马灯：旋转象征"时来运转"\n" +
+                "4. 工艺纸雕宫灯：融合剪纸艺术，获国家专利\n" +
+                "5. 大型电动彩灯：用于城市广场，展现现代创新\n" +
+                "命名多含吉祥谐音（如"鹿灯"谐"禄"）或历史典故",
+            "制作一盏传统的藁城宫灯，从备料到成品通常需要多长时间？对制作者的技艺有哪些具体要求？":"制作时间：\n" +
+                "- 手工制作：5-7天（56道工序）\n" +
+                "- 机械辅助：2-3天\n" +
+                "技艺要求：\n" +
+                "1. 材料处理：精通竹材特性，熟练劈篾、弯曲\n" +
+                "2. 造型结构：精准榫卯工艺，空间想象力\n" +
+                "3. 艺术装饰：掌握传统纹样绘画，镂空雕刻\n" +
+                "4. 核心技艺：上盖下托、镂空装饰、穗坠制作",
+            "如今藁城宫灯在产业化发展中面临哪些机遇和挑战？是否开发出了符合现代审美的创新产品？":"产业化发展：\n" +
+                "机遇：\n" +
+                "- 政策支持：列为非遗重点保护项目\n" +
+                "- 市场需求：国潮兴起，礼品市场扩容\n" +
+                "- 渠道变革：电商直播打破地域限制\n" +
+                "挑战：\n" +
+                "- 手工传承与规模化矛盾\n" +
+                "- 市场竞争与成本压力\n" +
+                "创新产品：\n" +
+                "- 极简几何宫灯\n" +
+                "- 国潮联名款\n" +
+                "- 智能交互宫灯\n" +
+                "- AR纸雕宫灯"
         };
 
+        this.createUI();
+        this.setupEventListeners();
+    }
+
+    createUI() {
+        // 创建浮动按钮
+        this.aiButton = document.createElement('div');
+        this.aiButton.id = 'palace-lantern-ai-button';
+        this.aiButton.innerHTML = '<i class="fas fa-robot"></i>';
+        document.body.appendChild(this.aiButton);
+
+        // 创建聊天窗口
+        this.chatWindow = document.createElement('div');
+        this.chatWindow.id = 'palace-lantern-chat-window';
+        this.chatWindow.innerHTML = `
+            <div class="chat-header">
+                <h3>宫灯文化助手</h3>
+                <button id="close-chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    您好！我是宫灯文化助手，可以回答关于藁城宫灯的历史、工艺、文化等方面的问题。
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="输入您的问题...">
+                <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="quick-questions">
+                <div class="quick-question" data-question="宫灯的历史渊源">历史渊源</div>
+                <div class="quick-question" data-question="宫灯的制作工艺">制作工艺</div>
+                <div class="quick-question" data-question="宫灯的主要种类">主要种类</div>
+                <div class="quick-question" data-question="宫灯的文化意义">文化意义</div>
+            </div>
+        `;
+        
+        // 将聊天窗口插入到页面主内容区
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+            mainContent.insertBefore(this.chatWindow, mainContent.firstChild);
+        } else {
+            document.body.appendChild(this.chatWindow);
+        }
+
+        this.addStyles();
+    }
+
+    addStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            #palace-lantern-ai-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: linear-gradient(to right, #c62828, #8b0000);
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                transition: all 0.3s;
+            }
+            
+            #palace-lantern-ai-button:hover {
+                transform: scale(1.1);
+            }
+            
+            #palace-lantern-chat-window {
+                width: 100%;
+                max-width: 100%;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                margin: 20px 0;
+                border-top: 4px solid #c62828;
+                overflow: hidden;
+            }
+            
+            .chat-header {
+                background: linear-gradient(to right, #c62828, #8b0000);
+                color: white;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .chat-header h3 {
+                margin: 0;
+                font-size: 1.2rem;
+            }
+            
+            .chat-header button {
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+            
+            .chat-messages {
+                height: 300px;
+                padding: 15px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .message {
+                max-width: 80%;
+                padding: 10px 15px;
+                border-radius: 18px;
+                word-wrap: break-word;
+            }
+            
+            .bot-message {
+                align-self: flex-start;
+                background: #f0f0f0;
+                border-bottom-left-radius: 5px;
+            }
+            
+            .user-message {
+                align-self: flex-end;
+                background: #c62828;
+                color: white;
+                border-bottom-right-radius: 5px;
+            }
+            
+            .chat-input {
+                display: flex;
+                padding: 15px;
+                border-top: 1px solid #eee;
+            }
+            
+            .chat-input input {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 20px;
+                outline: none;
+            }
+            
+            .chat-input button {
+                background: #c62828;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+            
+            .quick-questions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 0 15px 15px;
+            }
+            
+            .quick-question {
+                background: #ffebee;
+                border: 1px solid #c62828;
+                color: #8b0000;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            
+            .quick-question:hover {
+                background: #c62828;
+                color: white;
+            }
+            
+            @media (max-width: 768px) {
+                #palace-lantern-chat-window {
+                    margin: 10px 0;
+                }
+                
+                .chat-messages {
+                    height: 250px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    setupEventListeners() {
+        // 按钮点击事件
+        this.aiButton.addEventListener('click', () => {
+            this.chatWindow.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 关闭按钮
+        document.getElementById('close-chat').addEventListener('click', () => {
+            this.chatWindow.style.display = 'none';
+        });
+
+        // 发送消息
+        document.getElementById('send-message').addEventListener('click', () => {
+            this.sendMessage();
+        });
+
+        // 回车发送
+        document.getElementById('user-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.sendMessage();
+        });
+
+        // 快捷问题
+        document.querySelectorAll('.quick-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const question = button.getAttribute('data-question');
+                this.addMessage(question, 'user');
+                this.getAnswer(question);
+            });
+        });
+    }
+
+    sendMessage() {
+        const input = document.getElementById('user-input');
+        const message = input.value.trim();
+
+        if (message) {
+            this.addMessage(message, 'user');
+            this.getAnswer(message);
+            input.value = '';
+        }
+    }
+
+    addMessage(text, sender) {
+        const messages = document.getElementById('chat-messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+        messageDiv.textContent = text;
+        messages.appendChild(messageDiv);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    getAnswer(question) {
+        // 简单关键词匹配
+        const keywords = Object.keys(this.knowledgeBase);
+        const matchedKeyword = keywords.find(keyword =>
+            question.toLowerCase().includes(keyword.toLowerCase())
+        );
+
+        // 模拟AI思考延迟
+        setTimeout(() => {
+            if (matchedKeyword && this.knowledgeBase[matchedKeyword]) {
+                this.addMessage(this.knowledgeBase[matchedKeyword], 'bot');
+            } else {
+                this.addMessage("抱歉，我暂时无法回答这个问题。您可以尝试询问关于宫灯的历史、工艺、种类、产业或文化方面的问题。", 'bot');
+            }
+        }, 500);
+    }
+}
+
+// 初始化助手
+document.addEventListener('DOMContentLoaded', () => {
+    new PalaceLanternAI();
+});
         this.createUI();
         this.setupEventListeners();
     }
@@ -1106,4 +1426,5 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     new PalaceLanternAI();
 });
+
 
